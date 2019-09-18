@@ -1,0 +1,333 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    
+    <title>My JSP 'search.jsp' starting page</title>
+    
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">    
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="This is my page">
+		<meta charset="utf-8" />
+		
+		<style>
+			*{margin:0px;padding:0px;}
+			li{list-style: none;}
+			/*背景*/
+			#bg img{
+				width:100%;
+				height:100%;
+			}
+			/*登录*/
+			#login{
+				width:400px;
+				height:350px;
+				background:#ffffff63;
+				position:absolute;
+				right:50px;
+				border-radius: 10px;
+				overflow: hidden;
+			}
+			#login h2{
+				height:50px;
+				line-height: 50px;
+				text-align:center;
+				font-weight: 100;
+				font-family: "宋体";
+				background:#6495edbd;
+			}
+			#login form p{
+				margin-left:75px;
+				padding-top:30px;
+			}
+			#login form p input{
+				width:200px;
+				height:30px;
+				background:#4c3a3075;
+				border:0px;
+				color:white;
+			}
+			#login form p:nth-child(3) input{
+				width:100px;
+			}
+			#login form p:nth-child(3) img{
+				margin-right:77px;
+				width:80px;
+				height:30px;
+				border:0px;
+				display:block;
+				float:right;
+			}
+			#login form p span{
+				width:50px;
+				color:white;
+			}
+			#login form p:nth-child(2) span{
+				letter-spacing: 8px;
+			}
+			#login form p:nth-child(4) input{
+				width:114px;
+				border-radius: 5px;
+				cursor:pointer;
+			}
+			#login form p:nth-child(4) input:nth-child(2){
+				margin-left:20px;
+			}
+			/*注册*/
+			#regist{
+				position:absolute;
+				width:800px;
+				height:400px;
+				background:#ffffff63;
+				color:white;
+				border-radius:10px;
+				overflow: hidden;
+				display:none;
+			}
+			#regist h2{
+				height:50px;
+				line-height: 50px;
+				text-align:center;
+				font-weight: 100;
+				font-family: "宋体";
+				background:#6495edbd;
+				z-index: 50;
+			}
+			#regist p{
+				width:380px;
+				padding-top:15px;
+				margin-left:10px;
+			}
+			#regist p input{
+				width:200px;
+				height:30px;
+				background:#4c3a3075;
+				border:0px;
+				color:white;
+			}
+			#regist p select{
+				width:62px;
+				height:30px;
+				background:#4c3a3075;
+				color:white;
+			}
+			#regist p select:nth-child(3){
+				margin-left:78px;
+			}
+			#regist p textarea{
+				width:300px;
+				height:200px;
+				background:#4c3a3075;
+				border:0px;
+				color:white;
+			}
+			#regist p:nth-child(6){
+				position:absolute;
+				top:75px;
+				left:400px;
+			}
+			#regist p:nth-child(8){
+				width:100%;
+			}
+			#regist p:nth-child(8) input{
+				margin:0px 288px;
+				width:150px;
+				cursor:pointer;
+			}
+			
+			/*注册成功*/
+			#success{
+				width:300px;
+				height:300px;
+				background:white;
+				position:absolute;
+				border-radius:10px;
+				overflow:hidden;
+				display:none;
+			}
+			#success .top{
+				width:300px;
+				height:250px;
+				background:#6495edbd;
+				line-height:250px;
+				text-align:center;
+			}
+			#success .bottom{
+				width:300px;
+				height:50px;
+				background:yellow;
+				cursor:pointer;
+				line-height:50px;
+				text-align:center;
+				font-size:25px;
+				font-family:"宋体";
+			}
+			#success .bottom:hover{
+				background:red;
+				color:white;
+			}
+		</style>
+  </head>
+  
+  <body>
+    <div id="bg">
+    	<img src="img/login_bg.jpg">
+    </div>
+    <div id="login">
+    	<h2>用户登录</h2>
+    	<form method="post" id="login_do"> 
+    		<p><span>用户名</span><input name="username" type="text" /></p>
+    		<p><span>密码</span><input name="password" type="password" /></p>
+    		<p><span>验证码</span><input name="code" type="text" /><img class="code" src="code.do?method=getCode"></P>		
+    		<p><input class="but" type="button" value="登录"><input class="but" type="button" value="注册"></p>
+    		<p id="msg" style="color:white;text-align:center;"></p>
+    		<input style="display:none;" type="hidden" name="method" value="login"/>   
+    	</form>  	
+    </div>
+    <div id="regist">
+    	<h2>用户注册</h2><i style="z-index:100;background:url(img/player_icon.png) 0px 113px;
+    		width:18px;height:18px;position: absolute;top:10px;right:20px;cursor:pointer;"></i>
+    	<form method="post" id="regist_do">  		
+    		<p><span style="letter-spacing: 16px;">姓名</span><input type="text" /></p>
+    		<p><span style="letter-spacing: 16px;">密码</span><input type="password" /></p>
+    		<p><span>确认密码</span><input type="password" /></p>
+    		<p><span>出生日期</span><input id="date" type="date"></p>
+    		<p><span>家庭住址</span><select id="selProvince" onchange="provinceChange();"></select><select id="selCity"></select></p>
+    		<p><span style="display:inline-block;height:200px;position:relative;top:-100px;">个性签名</span><textarea></textarea></p>
+    		<p style="width:262px;"><span style="letter-spacing: 5px;">验证码</span><input type="text" style="width:80px;" /><img style="margin-left:10px;display:block;float:right;" class="code" src="code.do?method=getCode"></P>		
+    		<p><input class="but" type="button" value="提交"></p>
+    		<p id="msg1"></p>
+    		<input style="display:none;" type="hidden" name="method" value="regist"/>   
+    	</form>   	
+    </div>
+    <div id="success">
+    	<div class="top"></div>
+    	<div class="bottom">直接登录</div>
+    </div>
+  </body>
+  <script type="text/javascript" src="js/jquery.min.js" ></script>
+  <script type="text/javascript" src="js/Base64.js"></script>
+  <script src="js/js-area.js"></script>
+  <script src="js/jquery.mousewheel.js"></script>
+  <script>
+  	$("#bg").css("width",$(window).width()+"px").css("height",$(window).height()+"px")
+  	$("#login").css("top",$(window).height() / 2 -175 +"px")
+  	
+  	$("#regist").css("top",$(window).height() / 2 -200 +"px")
+  	$("#regist").css("left",$(window).width() / 2 -400 +"px")
+  	
+  	$("#chosedate").css("top",$(window).height() / 2 - 175 +"px").css("left",$(window).width() / 2 - 250 +"px")
+  	$("#success").css("top",$(window).height() / 2 - 150 +"px").css("left",$(window).width() / 2 - 150 +"px")
+  	
+  	$(".but").each(function(){
+  		$(this).mousedown(function(){
+  			$(this).css("background" , "#4c3a3075")
+  		})
+  		$(this).mouseup(function(){
+  			$(this).css("background" , "red")
+  		})
+  		$(this).hover(function(){
+  			$(this).css("background" , "red")
+  		},function(){
+  			$(this).css("background" , "#4c3a3075")
+  		})
+  	})
+  	$(".but:eq(0)").click(function(){
+  		//alert(new Base64().encode("123"))
+  		var username = new Base64().encode($("#login_do").find("p:eq(0) input").val())
+  		var password = new Base64().encode($("#login_do").find("p:eq(1) input").val())
+  		var code = new Base64().encode($("#login_do").find("p:eq(2) input").val())
+  		
+  		$.post("user.do?method=login" , {"username":username,"password":password,"code":code},function(data){
+  			console.log(data)
+  			data = eval(data)
+  			if("180"==data[0].status && "CODE_ERROR"==data[0].error){
+  				$("#msg").html("")
+  				$("#msg").html("!!! 验证码错误")
+  				$("#login_do").find(".code").attr("src","code.do?method=getCode&rand="+Math.random())
+  			}else if("181"==data[0].status && "ERROR_PASSWORD"==data[0].error){
+  				$("#msg").html("")
+  				$("#msg").html("!!! 密码错误")
+  				$("#login_do").find(".code").attr("src","code.do?method=getCode&rand="+Math.random())
+  			}else if("200"==data[0].status){
+  				location="index.jsp"
+  			}else if("182"==data[0].status && "ERROR_USERNAME_EMPTY"==data[0].error){
+  				$("#msg").html("")
+  				$("#msg").html("!!! 账号不能为空")
+  				$("#login_do").find(".code").attr("src","code.do?method=getCode&rand="+Math.random())
+  			}else if("183"==data[0].status && "ERROR_PASSWORD_EMPTY"==data[0].error){
+  				$("#msg").html("")
+  				$("#msg").html("!!! 密码不能为空")
+  				$("#login_do").find(".code").attr("src","code.do?method=getCode&rand="+Math.random())
+  			}
+  		})
+  	})
+  	$(".but:eq(1)").click(function(){
+  		$("#login").css("display","none")
+  		$("#regist").css("display","block")
+  		$("#regist_do").find(".code").attr("src","code.do?method=getCode&rand="+Math.random())
+  	})
+  	$(".code").each(function(){
+  		$(this).click(function(){
+  			$(this).attr("src","code.do?method=getCode&rand="+Math.random())
+  		})
+  	})
+  	$("#regist").find("i").each(function(){
+  		$(this).click(function(){
+  			$("#login").css("display","block")
+  			$("#regist").css("display","none")
+  			$("#login_do").find(".code").attr("src","code.do?method=getCode&rand="+Math.random())
+  		})
+  	})
+  	$(".but:eq(2)").click(function(){
+  		//alert($("#regist_do").find("p:eq(0) input").val())
+  		var name = $("#regist_do").find("p:eq(0) input").val()
+  		var password = new Base64().encode($("#regist_do").find("p:eq(1) input").val())
+  		var birthday = new Base64().encode($("#regist_do").find("p:eq(3) input").val())
+  		var local = $("#regist_do").find("p:eq(4) select:eq(0)").val()+"-"+$("#regist_do").find("p:eq(4) select:eq(1)").val()
+  		var gexing = $("#regist_do").find("p:eq(5) textarea").val()
+  		var code = new Base64().encode($("#regist_do").find("p:eq(6) input").val())
+  		
+  		$.post("user.do?method=regist",{"name":name,"password":password,"birthday":birthday,"local":local,"gexing":gexing,"code":code},function(data){
+  			data = eval(data)
+  			if("184"==data[0].status && "ERROR_NAME_EMPTY"==data[0].error){
+  				$("#msg1").html("")
+  				$("#msg1").html("!!! 姓名不能为空")
+  				$("#regist_do").find(".code").attr("src","code.do?method=getCode&rand="+Math.random())
+  			}else if("185"==data[0].status && "ERROR_PASSWORD_EMPTY"==data[0].error){
+  				$("#msg1").html("")
+  				$("#msg1").html("!!! 密码不能为空")
+  				$("#regist_do").find(".code").attr("src","code.do?method=getCode&rand="+Math.random())
+  			}else if("200"==data[0].status){
+  				$("#success").css("display","block")
+  				$("#success .top").html("恭喜您！！注册成功\n账号为:"+data[0].username)
+  			}else if("186"==data[0].status && "ERROR_BIRTHDAY_EMPTY"==data[0].error){
+  				$("#msg1").html("")
+  				$("#msg1").html("!!! 生日不能为空")
+  				$("#regist_do").find(".code").attr("src","code.do?method=getCode&rand="+Math.random())
+  			}else if("187"==data[0].status && "ERROR_CODE"==data[0].error){
+  				$("#msg1").html("")
+  				$("#msg1").html("!!! 验证码错误")
+  				$("#regist_do").find(".code").attr("src","code.do?method=getCode&rand="+Math.random())
+  			}else if("188"==data[0].status && "ERROR_FAILD"==data[0].error){
+  				$("#msg1").html("")
+  				$("#msg1").html("!!! 注册失败请联系客服")
+  				$("#regist_do").find(".code").attr("src","code.do?method=getCode&rand="+Math.random())
+  			}
+  		})
+  	})
+  	$("#regist_do").find("p:eq(2) input").blur(function(){
+  		var password = $("#regist_do").find("p:eq(1) input").val()
+  		if($(this).val() != password){
+  			$("#msg1").html("")
+  			$("#msg1").html("！！！ 前后密码不一致")
+  		}else{
+  			$("#msg1").html("")
+  		}
+  	})
+  	$("#success .bottom").click(function(){
+  		location="index.jsp"
+  	})
+  </script>
+</html>

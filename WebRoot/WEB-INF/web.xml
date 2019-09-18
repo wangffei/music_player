@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>GetLrcServlet</servlet-name>
+    <servlet-class>com.servlet.MusicServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>com.servlet.UserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ImageCodeServlet</servlet-name>
+    <servlet-class>com.servlet.ImageCodeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ScriptServlet</servlet-name>
+    <servlet-class>com.servlet.ScriptServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DetailServlet</servlet-name>
+    <servlet-class>com.servlet.DetailServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MoreServlet</servlet-name>
+    <servlet-class>com.servlet.MoreServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>PageServlet</servlet-name>
+    <servlet-class>com.servlet.PageServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SearchServlet</servlet-name>
+    <servlet-class>com.servlet.SearchServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>YYMusicServlet</servlet-name>
+    <servlet-class>com.servlet.YYMusicServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>FileServlet</servlet-name>
+    <servlet-class>com.servlet.FileServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>RecorderServlet</servlet-name>
+    <servlet-class>com.servlet.RecorderServlet</servlet-class>
+  </servlet>
+
+
+
+  <listener>
+  	<listener-class>com.autorun.MySqlRun</listener-class>
+  </listener>
+
+
+
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>GetLrcServlet</servlet-name>
+    <url-pattern>/music.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/user.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ImageCodeServlet</servlet-name>
+    <url-pattern>/code.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ScriptServlet</servlet-name>
+    <url-pattern>/script.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DetailServlet</servlet-name>
+    <url-pattern>/detail.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MoreServlet</servlet-name>
+    <url-pattern>/more.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PageServlet</servlet-name>
+    <url-pattern>/page.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchServlet</servlet-name>
+    <url-pattern>/search.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>YYMusicServlet</servlet-name>
+    <url-pattern>/music.yy</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FileServlet</servlet-name>
+    <url-pattern>/file.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RecorderServlet</servlet-name>
+    <url-pattern>/recorder.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <filter>
+  	<filter-name>check</filter-name>
+  	<filter-class>com.filter.IndexFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>check</filter-name>
+  	<url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+</web-app>
